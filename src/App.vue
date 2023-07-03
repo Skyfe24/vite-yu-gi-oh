@@ -1,21 +1,21 @@
 <script>
 import axios from 'axios';
 import AppMain from './components/AppMain.vue';
-import pokeList from './store';
+import { store } from './store';
 
 
 export default {
   data() {
     return {
-      pokeList []
+
     }
   },
   components: {
-    AppMain, ComicCard
-  }
+    AppMain,
+  },
   created() {
-    axios.get(endpoint).then(res => {
-      store.pokeList = res.data.results;
+    axios.get("https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons").then(res => {
+      store.pokeList = res.data;
     })
   }
 
